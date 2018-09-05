@@ -120,16 +120,16 @@ module.exports = function prettyFactory (options) {
       log.time = formatTime(log.time, opts.translateTime)
     }
 
-    var line = `[${log.time}]`
+    var line = '';
 
-    const coloredLevel = levels.hasOwnProperty(log.level)
-      ? color[log.level](levels[log.level])
-      : color.default(levels.default)
-    if (opts.levelFirst) {
-      line = `${coloredLevel} ${line}`
-    } else {
-      line = `${line} ${coloredLevel}`
-    }
+    // const coloredLevel = levels.hasOwnProperty(log.level)
+    //   ? color[log.level](levels[log.level])
+    //   : color.default(levels.default)
+    // if (opts.levelFirst) {
+    //   line = `${coloredLevel} ${line}`
+    // } else {
+    //   line = `${line} ${coloredLevel}`
+    // }
 
     if (log.name || log.pid || log.hostname) {
       line += ' ('
