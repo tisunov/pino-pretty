@@ -8,16 +8,6 @@ const jmespath = require('jmespath')
 
 const CONSTANTS = require('./lib/constants')
 
-const levels = {
-  default: 'USERLVL',
-  60: 'FATAL',
-  50: 'ERROR',
-  40: 'WARN',
-  30: 'INFO',
-  20: 'DEBUG',
-  10: 'TRACE'
-}
-
 const defaultOptions = {
   colorize: chalk.supportsColor,
   crlf: false,
@@ -120,7 +110,7 @@ module.exports = function prettyFactory (options) {
       log.time = formatTime(log.time, opts.translateTime)
     }
 
-    var line = '';
+    var line = ''
 
     // const coloredLevel = levels.hasOwnProperty(log.level)
     //   ? color[log.level](levels[log.level])
@@ -130,28 +120,6 @@ module.exports = function prettyFactory (options) {
     // } else {
     //   line = `${line} ${coloredLevel}`
     // }
-
-    if (log.name || log.pid || log.hostname) {
-      line += ' ('
-
-      if (log.name) {
-        line += log.name
-      }
-
-      if (log.name && log.pid) {
-        line += '/' + log.pid
-      } else if (log.pid) {
-        line += log.pid
-      }
-
-      if (log.hostname) {
-        line += ' on ' + log.hostname
-      }
-
-      line += ')'
-    }
-
-    line += ': '
 
     if (log[messageKey]) {
       line += color.message(log[messageKey])
